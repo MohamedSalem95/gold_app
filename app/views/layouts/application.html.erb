@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html dir="rtl" class="has-navbar-fixed-top">
+  <head>
+    <title>GoldApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'hello_vue' %>
+  </head>
+
+  <body class="pt-5">
+    <div id="app">
+      <%= render partial: 'layouts/header' %>
+      <div class="px-6 pt-5">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
