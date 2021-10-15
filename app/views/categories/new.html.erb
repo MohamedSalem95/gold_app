@@ -1,0 +1,58 @@
+<div class="columns">
+
+    <div class="column">
+        <h5 class="title is-5"> انشاء فئه جديده. </h5>
+        <%= form_with model: @category, local: true do |f| %>
+            <div class="field">
+                <%= f.label :name, 'الاسم', class: 'has-text-weight-bold' %> <span class="has-text-danger">*</span>
+                <div class="control">
+                    <%= f.text_field :name, autofocuns: true, class: "input #{'is-danger' if @category.errors[:name].any?}", placeholder: 'اسم الفئه ...' %>
+                </div>
+                <% @category.errors[:name].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+
+             <div class="field">
+                <%= f.label :code, 'الكود', class: 'has-text-weight-bold' %>  <span class="has-text-danger">*</span>
+                <div class="control">
+                    <%= f.number_field :code, min: 0, class: "input #{'is-danger' if @category.errors[:code].any?}", placeholder: 'كود الفئه ...' %>
+                </div>
+                <% @category.errors[:name].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+            <div class="field">
+                <%= f.label :description, 'الوصف', class: 'has-text-weight-bold' %>
+                <div class="control">
+                    <%= f.text_area :description, rows: 6, class: "textarea", placeholder: 'وصف الفئه ...' %>
+                </div>
+            </div>
+
+            <div class="file mb-3">
+                <%= f.label :image, class: 'has-text-weight-bold' do %>
+                    الصوره   <span class="has-text-danger">*</span>
+                    <div>
+                        <%= f.file_field :image, class: "file-input #{'is-danger' if @category.errors[:image].any?}" %>
+                    </div>
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            اختر صوره...
+                        </span>
+                    </span>
+                    <% @category.errors[:name].each do |error| %>
+                        <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                    <% end %>
+                <% end %>
+            </div>
+            <%= f.submit 'انشاء', class: 'button is-success' %>
+        <% end %>
+    
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+<div class="columns">
+
+    <div class="column">
+        <h5 class="title is-5"> جميع الفئات. </h5>
+        <p>
+            <%= link_to 'انشاء فئه جديده.', new_category_path, class: 'has-text-weight-bold' %>
+        </p>
+
+        <% if @categories.any? %>
+            <% @categories.each do |cat| %>
+                <div class="has-border-radius-10 is-inline-block p-2 has-background-light ml-3">
+                    <div>
+                        <%= image_tag cat.image.variant(resize_to_fill: [200, 200]), class: 'has-border-radius-10' %>
+                    </div>
+                    <p class="has-text-weight-semibold"> <%= cat.name %> </p>
+                </div>
+            <% end %>
+        <% else %>
+            <p class="has-text-weight-semibold">
+                لا يوجد فئات بعد, من فضلك قم بانشاء فئه حتي تستطيع انشاء منتج.
+            </p>
+        <% end %>
+    
+    </div>
+
+</div>

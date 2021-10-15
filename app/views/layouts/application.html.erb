@@ -15,6 +15,14 @@
     <div id="app">
       <%= render partial: 'layouts/header' %>
       <div class="px-6 pt-5">
+        <% if flash[:success] %>
+          <article class="message is-success">
+            <div class="message-body">
+              <strong> <%= flash[:success] %> </strong>
+            </div>
+          </article>
+        <% end %>
+
         <%= yield %>
       </div>
     </div>
