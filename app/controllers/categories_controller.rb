@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
     before_action :set_category, only: [:edit, :update, :confirm]
 
     def index
-        @categories = Category.latest
+        @categories = Category.latest.page(params[:page])
     end
 
     def new

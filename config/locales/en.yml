@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  views:
+    pagination:
+      first: "&laquo; الاولي"
+      last: "الاخيره &raquo;"
+      previous: "&lsaquo; السابقه"
+      next: "التاليه &rsaquo;"
+      truncate: "&hellip;"

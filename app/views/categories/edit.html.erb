@@ -6,10 +6,10 @@
                 <li>
                     <%= link_to 'الفئات', categories_path %>
                 </li>
-                <li class="is-active has-text-weight-semibold has-text-grey"><a href="#" aria-current="page"> انشاء فئه </a></li>
+                <li class="is-active has-text-weight-semibold has-text-grey"><a href="#" aria-current="page"> تعديل فئه </a></li>
             </ul>
         </nav>
-        <h5 class="title is-5"> انشاء فئه جديده. </h5>
+        <h5 class="title is-5"> تعديل فئه . </h5>
         <%= form_with model: @category, local: true do |f| %>
             <div class="field">
                 <%= f.label :name, 'الاسم', class: 'has-text-weight-bold' %> <span class="has-text-danger">*</span>
