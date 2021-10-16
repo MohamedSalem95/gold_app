@@ -1,0 +1,98 @@
+<div class="columns">
+    <div class="column">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li>
+                    <%= link_to 'المنتجات', products_path %>
+                </li>
+                <li class="is-active has-text-weight-semibold has-text-grey"><a href="#" aria-current="page"> انشاء منتج </a></li>
+            </ul>
+        </nav>
+        <h5 class="title is-5"> انشاء منتج جديد. </h5>
+        <%= form_with model: @product, local: true do |f| %>
+
+           
+
+            <div class="field">
+                <%= f.label :name, 'الاسم', class: 'has-text-weight-bold mt-2' %> <span class="has-text-danger">*</span>
+                <div class="control">
+                    <%= f.text_field :name, autofocuns: true, class: "input #{'is-danger' if @product.errors[:name].any?}", placeholder: 'اسم المنتج ...' %>
+                </div>
+                <% @product.errors[:name].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+            <div class="field">
+                <%= f.label :description, 'الوصف', class: 'has-text-weight-bold' %>
+                <div class="control">
+                    <%= f.text_area :description, rows: 6, class: "textarea", placeholder: 'وصف المنتج ...' %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= f.label :code, 'الكود', class: 'has-text-weight-bold' %>  <span class="has-text-danger">*</span>
+                <div class="control">
+                    <%= f.number_field :code, min: 0, class: "input #{'is-danger' if @product.errors[:code].any?}", placeholder: 'كود المنتج ...' %>
+                </div>
+                <% @product.errors[:code].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+            <div class="field">
+                <%= f.label :stock, 'الكميه', class: 'has-text-weight-bold' %>  <span class="has-text-danger">*</span>
+                <div class="control">
+                    <%= f.number_field :stock, min: 0, class: "input #{'is-danger' if @product.errors[:stock].any?}", placeholder: ' الكميه ...' %>
+                </div>
+                <% @product.errors[:stock].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+            <div class="field">
+                <%= f.label :price, 'السعر', class: 'has-text-weight-bold' %>  <span class="has-text-danger">*</span>
+                <div class="control">
+                    <%= f.number_field :price, step: :any, min: 0, class: "input #{'is-danger' if @product.errors[:price].any?}", placeholder: 'سعر المنتج ...' %>
+                </div>
+                <% @product.errors[:price].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+             <div class="field">
+                <%= f.label :discount, 'الخصم (ان وجد)', class: 'has-text-weight-bold' %>
+                <div class="control">
+                    <%= f.number_field :discount, step: :any, min: 0, class: "input #{'is-danger' if @product.errors[:discount].any?}", placeholder: 'الخصم  ...' %>
+                </div>
+                <% @product.errors[:discount].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+            <div class="field">
+                <%= f.label :gold_type, 'العيار', class: 'has-text-weight-bold' %>  <span class="has-text-danger">*</span>
+                <div class="control">
+                    <%= f.number_field :gold_type, min: 0, class: "input #{'is-danger' if @product.errors[:gold_type].any?}", placeholder: 'العيار  ...' %>
+                </div>
+                <% @product.errors[:gold_type].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+             <div class="select">
+                <%= f.label :category_code, 'الفئه', class: 'has-text-weight-bold' %> <span class="has-text-danger">*</span>
+                
+                <%= f.select :category_code, Category.latest.map { |cat| [cat.name, cat.code] }, { include_blank: '__اختر الفئه__' }, { class: " mb-2 #{'is-danger' if @product.errors[:category_code].any?}"} %>
+                
+                <% @product.errors[:category_code].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+            <p></p>
+
+            <%= f.submit 'حفظ', class: 'button is-success mt-6' %>
+
+        <% end %>
+    </div>
+</div>

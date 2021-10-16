@@ -1,5 +1,8 @@
 class Category < ApplicationRecord
 
+    # associations
+    has_many :products
+
     # kaminari
     paginates_per 3
 

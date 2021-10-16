@@ -27,7 +27,7 @@
                 <div class="control">
                     <%= f.number_field :code, min: 0, class: "input #{'is-danger' if @category.errors[:code].any?}", placeholder: 'كود الفئه ...' %>
                 </div>
-                <% @category.errors[:name].each do |error| %>
+                <% @category.errors[:code].each do |error| %>
                     <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
                 <% end %>
             </div>

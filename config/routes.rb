@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   resources :categories
   get 'categories/:id/confirm', to: 'categories#confirm', as: 'confirm_category'
   get 'welcome/index'
