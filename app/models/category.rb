@@ -1,7 +1,7 @@
 class Category < ApplicationRecord
 
     # kaminari
-    paginates_per 2
+    paginates_per 3
 
     # active storage
     has_one_attached :image
