@@ -1,26 +1,62 @@
 <div class="columns">
 
-    <div class="column">
-        <h5 class="title is-5"> جميع الفئات. </h5>
-        <p>
-            <%= link_to 'انشاء فئه جديده.', new_category_path, class: 'has-text-weight-bold' %>
-        </p>
+           <div class="column">
+                <h5 class="title is-5"> جميع الفئات. </h5>
+                <p>
+                    <%= link_to 'انشاء فئه جديده.', new_category_path, class: 'has-text-weight-bold' %>
+                </p>
+                
+            
 
-        <% if @categories.any? %>
-            <% @categories.each do |cat| %>
-                <div class="has-border-radius-10 is-inline-block p-2 has-background-light ml-3">
-                    <div>
-                        <%= image_tag cat.image.variant(resize_to_fill: [200, 200]), class: 'has-border-radius-10' %>
-                    </div>
-                    <p class="has-text-weight-semibold"> <%= cat.name %> </p>
-                </div>
-            <% end %>
-        <% else %>
-            <p class="has-text-weight-semibold">
-                لا يوجد فئات بعد, من فضلك قم بانشاء فئه حتي تستطيع انشاء منتج.
-            </p>
-        <% end %>
+                <% if @categories.any? %>
+                    <table class="table is-striped is-hoverable is-narrow is-fullwidth">
+                        <thead>
+                            <th> الصوره </th>
+                            <th> الاسم </th>
+                            <th> التفاصيل </th>
+                            <th> الكود </th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <% @categories.each do |cat| %>
+                                <tr>
+                                    <td>
+                                        <figure class="image is-48x48">
+                                            <%= image_tag cat.image.variant(resize_to_fill: [81, 81]), width: 81, class: 'has-border-radius-5' %>
+
+                                        </figure>
+                                    
+                                    </td>
+                                    <td class="has-text-weight-bold">
+                                        <%= cat.name %>
+                                    </td>
+
+                                    <td>
+                                        <%= cat.description %>
+                                    </td>
+
+                                    <td>
+                                        <%= cat.code %>
+                                    </td>
+
+                                    <td>
+                                        <%= link_to 'تعديل', edit_category_path(cat), class: 'has-text-weight-semibold' %>
+                                        &nbsp;
+                                        <%= link_to 'حذف', confirm_category_path(cat), class: 'has-text-weight-semibold has-text-danger' %>
+                                    </td>
+                                </tr>    
+                            <% end %>
+                            
+                        </tbody>
+                    </table>
+                <% else %>
+                    <p class="has-text-weight-semibold">
+                        لا يوجد فئات بعد, من فضلك قم بانشاء فئه حتي تستطيع انشاء منتج.
+                    </p>
+                <% end %>
+     
+           </div>
     
-    </div>
+ 
 
 </div>

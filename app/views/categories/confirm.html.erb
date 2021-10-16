@@ -1,0 +1,16 @@
+<div class="columns">
+    <div class="column">
+        <p class="has-text-danger has-text-weight-semibold mb-2">
+            هل انت متاكد انك تريد حذف الفئه 
+            <u class="has-text-primary">
+                <span>
+                    <%= @category.name %>
+                </span>
+            </u>
+            ؟
+        </p>
+
+        <%= link_to 'نعم', category_path(@category), method: :delete, class: 'button is-danger' %>
+        <%= link_to 'عوده', categories_path, class: 'button is-primary mr-2' %>
+    </div>
+</div>

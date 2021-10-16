@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+    before_action :set_category, only: [:edit, :update, :confirm]
+
     def index
         @categories = Category.latest
     end
@@ -18,8 +20,33 @@ class CategoriesController < ApplicationController
 
     end
 
+    def edit
+    end
+
+    def update
+        if @category.update(cat_params)
+            flash[:success] = 'تم تعديل الفئه بنجاح.'
+            redirect_to categories_path
+        else
+            render :edit
+        end
+    end
+
+    def confirm
+    end
+
+    def destroy
+        @category.destroy
+        flash['success'] = 'تم حذف الفئه بنجاح'
+        redirect_to categories_path
+    end
+
     private
     def cat_params
         params.require(:category).permit(:name, :code, :description, :image)
+    end
+
+    def set_category
+        @category = Category.find(params[:id])
     end
 end
