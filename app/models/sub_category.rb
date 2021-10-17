@@ -8,6 +8,7 @@ class SubCategory < ApplicationRecord
 
     # associations
     belongs_to :category
+    has_many :products
 
     # validations
     validates_presence_of :name, message: 'هذا الحقل مطلوب.'

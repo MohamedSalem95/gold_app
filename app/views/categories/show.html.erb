@@ -9,7 +9,7 @@
             <ul class="menu-list">
                 <li><%=  link_to 'الفئات', categories_path, class: 'is-active' %></li>
                 <!-- <li><a> فضيات </a></li> -->
-                <li> <%=  link_to 'المنتجات', products_path %> </li>
+                <li> <%=  link_to 'المنتجات', '' %> </li>
             </ul>
             
             </aside>
@@ -36,7 +36,11 @@
                 <p class="mt-0 mb-2">
                     <%= @category.description %>
                 </p>
-                <%= link_to 'اضافه فئه فرعيه', new_category_sub_category_path(@category), class: 'button is-primary is-small has-text-weight-bold' %>
+                <div class="is-flex is-flex-direction-row">
+                    <%= link_to 'اضافه فئه فرعيه', new_category_sub_category_path(@category), class: 'button is-primary is-small has-text-weight-bold' %>
+                    &nbsp;
+                    <%= link_to 'اضافه منتج', new_category_product_path(@category), class: 'button is-link is-small has-text-weight-bold' %>
+                </div>
             </div>
         </div>
         <h5 class="title is-5"> الفئات الفرعيه. </h5>

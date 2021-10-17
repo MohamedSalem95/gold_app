@@ -7,9 +7,9 @@
                     الاداره
             </p>
             <ul class="menu-list">
-                <li><%=  link_to 'الفئات', categories_path%></li>
+                <li><%=  link_to 'الفئات', categories_path %></li>
                 <!-- <li><a> فضيات </a></li> -->
-                <li> <%=  link_to 'المنتجات', products_path, class: 'is-active' %> </li>
+                <li> <%=  link_to 'المنتجات', '#', class: 'is-active' %> </li>
             </ul>
         
             </aside>
@@ -19,13 +19,14 @@
 
     <div class="column">
         <h5 class="title is-5"> جميع المنتجات. <h5>
-        <%= link_to 'انشاء منتج.', new_product_path, class: 'has-text-weight-semibold' %>
+        <%# link_to 'انشاء منتج.', new_product_path, class: 'has-text-weight-semibold' %>
         <% if @products.any? %>
 
             <table class="table is-narrow is-stripped is-fullwidth is-hoverable">
                 <thead>
                     <th> الاسم </th>
                     <th> الفئه </th>
+                    <th> الفئه الفرعيه </th>
                     <th> السعر </th>
                     <th> الخصم </th>
                     <th> العيار </th>
@@ -38,6 +39,7 @@
                         <tr>
                             <td> <b> <%= product.name %> </b> </td>
                             <td> <%= product.category.name %> </td>
+                            <td> <%= product.sub_category.name %> </td>
                             <td> <b> <%= product.price %> </b> </td>
                             <td>
                                 <% if product.discount.present? %>

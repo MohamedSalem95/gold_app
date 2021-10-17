@@ -3,13 +3,18 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
                 <li>
-                    <%= link_to 'المنتجات', products_path %>
+                    <%= link_to 'الفئات', categories_path %>
                 </li>
+
+                <li>
+                    <%= link_to @category.name, category_path(@category) %>
+                </li>
+                
                 <li class="is-active has-text-weight-semibold has-text-grey"><a href="#" aria-current="page"> انشاء منتج </a></li>
             </ul>
         </nav>
         <h5 class="title is-5"> انشاء منتج جديد. </h5>
-        <%= form_with model: @product, local: true do |f| %>
+        <%= form_with model: [@category, @product], local: true do |f| %>
 
            
 
@@ -81,11 +86,11 @@
             </div>
 
              <div class="select">
-                <%= f.label :category_code, 'الفئه', class: 'has-text-weight-bold' %> <span class="has-text-danger">*</span>
+                <%= f.label :sub_code, 'الفئه', class: 'has-text-weight-bold' %> <span class="has-text-danger">*</span>
                 
-                <%= f.select :category_code, Category.latest.map { |cat| [cat.name, cat.code] }, { include_blank: '__اختر الفئه__' }, { class: " mb-2 #{'is-danger' if @product.errors[:category_code].any?}"} %>
+                <%= f.select :sub_code, @category.sub_categories.map { |sub| [sub.name, sub.code] }, { include_blank: '__اختر الفئه الفرعيه__' }, { class: " mb-2 #{'is-danger' if @product.errors[:sub_code].any?}"} %>
                 
-                <% @product.errors[:category_code].each do |error| %>
+                <% @product.errors[:sub_code].each do |error| %>
                     <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
                 <% end %>
             </div>

@@ -2,6 +2,7 @@ class Product < ApplicationRecord
 
     # associations
     belongs_to :category
+    belongs_to :sub_category
 
     # scopes
     scope :latest, -> { order(created_at: :desc) }

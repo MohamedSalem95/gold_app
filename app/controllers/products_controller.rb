@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+    before_action :set_cat, only: [:new, :create]
+
     def index
         @products = Product.latest
     end
@@ -10,7 +12,9 @@ class ProductsController < ApplicationController
 
     def create
         @product = Product.new(product_params)
-        @product.category = get_cat
+        @product.category_code = @category.code
+        @product.category = @category
+        @product.sub_category = get_sub
         if @product.save
             flash[:success] = 'تم انشاء المنتج بنجاح'
             redirect_to products_path
@@ -21,12 +25,16 @@ class ProductsController < ApplicationController
 
     private
     def product_params
-        params.require(:product).permit(:name, :description, :code, :stock, :price, :discount, :gold_type, :category_code)
+        params.require(:product).permit(:name, :description, :code, :stock, :price, :discount, :gold_type, :sub_code)
     end
 
-    def get_cat
-        cat_code = product_params['category_code']
-        Category.find_by_code(cat_code)
+    def set_cat
+        @category = Category.find(params[:category_id])
+    end
+
+    def get_sub
+        sub_code = product_params['sub_code']
+        SubCategory.find_by_code(sub_code)
     end
 
 end
