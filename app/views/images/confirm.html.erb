@@ -1,0 +1,11 @@
+<div class="columns">
+    <div class="column">
+        <p class="has-text-danger has-text-weight-semibold mb-2">
+            هل انت متاكد انك تريد حذف  هذه الصوره
+            ؟
+        </p>
+
+        <%= link_to 'نعم', category_product_image_path(@product.category, @product, @image), method: :delete, class: 'button is-danger' %>
+        <%= link_to 'عوده', category_product_path(@product.category, @product), class: 'button is-primary mr-2' %>
+    </div>
+</div>

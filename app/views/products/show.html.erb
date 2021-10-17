@@ -54,7 +54,7 @@
                     <p>
                         <%= image.caption %>
                     </p>
-                    <%= link_to 'حذف', '#', class: 'has-text-danger' %>
+                    <%= link_to 'حذف', confirm_category_product_image_path(@product.category, @product, image), class: 'has-text-danger' %>
                 </div>
             <% end %>
         <% else %>
