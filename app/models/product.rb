@@ -3,6 +3,7 @@ class Product < ApplicationRecord
     # associations
     belongs_to :category
     belongs_to :sub_category
+    has_many :images
 
     # scopes
     scope :latest, -> { order(created_at: :desc) }

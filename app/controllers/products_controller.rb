@@ -1,9 +1,16 @@
 class ProductsController < ApplicationController
 
-    before_action :set_cat, only: [:new, :create]
+    before_action :set_cat, only: [:new, :create, :show]
+    before_action :set_product, only: [:show]
+
+    def list
+        @products = Product.latest
+    end
 
     def index
-        @products = Product.latest
+    end
+
+    def show
     end
 
     def new
@@ -35,6 +42,10 @@ class ProductsController < ApplicationController
     def get_sub
         sub_code = product_params['sub_code']
         SubCategory.find_by_code(sub_code)
+    end
+
+    def set_product
+        @product = Product.find(params[:id])
     end
 
 end

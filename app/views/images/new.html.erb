@@ -1,0 +1,38 @@
+<div class="columns">
+    <div class="column">
+        <p class="has-text-weight-bold">
+            اضافه صوره ل<span class="has-text-success"><%= @product.name %></span>
+        </p>
+
+        <%= form_with model: [@product.category, @product, @image], local: true do |f| %>
+            <div class="field">
+                <%= f.label :caption, 'الكابشن', class: 'has-text-weight-bold' %>
+                <div class="control">
+                    <%= f.text_field :caption, autofocuns: true, class: "input", placeholder: ' الكابشن ...' %>
+                    <p class="has-text-grey-light"> سوف يظهر هذا لك فقط. </p>
+                </div>
+            </div>
+
+            <div class="file mb-3">
+                <%= f.label :image, class: 'has-text-weight-bold' do %>
+                    الصوره   <span class="has-text-danger">*</span>
+                    <div>
+                        <%= f.file_field :image, class: "file-input #{'is-danger' if @image.errors[:image].any?}" %>
+                    </div>
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            اختر صوره...
+                        </span>
+                    </span>
+                    <% @image.errors[:image].each do |error| %>
+                        <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                    <% end %>
+                <% end %>
+            </div>
+            <%= f.submit 'حفظ', class: 'button is-success' %>
+        <% end %>
+    </div>
+</div>

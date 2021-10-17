@@ -53,7 +53,7 @@
                             اختر صوره...
                         </span>
                     </span>
-                    <% @category.errors[:name].each do |error| %>
+                    <% @category.errors[:image].each do |error| %>
                         <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
                     <% end %>
                 <% end %>

@@ -31,6 +31,7 @@
                     <th> الخصم </th>
                     <th> العيار </th>
                     <th> الكود </th>
+                    <th>  </th>
 
                 </thead>
 
@@ -50,6 +51,9 @@
                             </td>
                             <td> <%= product.gold_type %> </td>
                             <td> <%= product.code %> </td>
+                            <td>
+                                <%= link_to 'عرض', category_product_path(product.category, product), class: 'button is-small is-outlined has-text-weight-semibold' %>
+                            </td>
                         </tr>
                     <% end %>
                 </tbody>

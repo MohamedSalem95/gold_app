@@ -1,0 +1,66 @@
+<div class="columns">
+
+    <div class="column">
+        <h5 class="title is-5"> <%= @product.name %> </h5>
+        <p>
+            <%= @product.description %>
+        </p>
+        <p class="has-text-weight-semibold">
+            السعر: 
+            <span class="has-text-success"> <%= @product.price %> </span>
+        </p>
+
+        <p class="has-text-weight-semibold">
+            الخصم: 
+            <% if @product.discount.present? %>
+                <span class="has-text-success"> <%= @product.price %> </span>
+            <% else %>
+                لا يوجد
+            <% end %>
+        </p>
+        <p class="has-text-weight-semibold">
+            العيار: 
+            <span class="has-text-danger"> <%= @product.gold_type %> </span>
+        </p>
+
+        <p class="has-text-weight-semibold">
+            الكود: 
+            <span class=""> <%= @product.code %> </span>
+        </p>
+
+        <p class="has-text-weight-semibold">
+            الكميه: 
+            <span class=""> <%= @product.stock %> </span>
+        </p>
+
+        <p class="has-text-weight-semibold">
+            الفئه: 
+            <span class=""> <%= @product.category.name %> </span>
+        </p>
+
+        <p class="has-text-weight-semibold">
+            الفئه الفرعيه: 
+            <span class=""> <%= @product.sub_category.name %> </span>
+        </p>
+
+        <p class="has-text-weight-semibold">
+            الصور: 
+            
+        </p>
+        <% if @product.images.any? %>
+            <% @product.images.each do |image| %>
+                <div class="has-background-light has-border-radius-10 p-3 mb-2 ml-2">
+                    <%= image_tag image.image.variant(resize_to_fill: [100, 100]) %>
+                    <p>
+                        <%= image.caption %>
+                    </p>
+                    <%= link_to 'حذف', '#', class: 'has-text-danger' %>
+                </div>
+            <% end %>
+        <% else %>
+            <p class="has-text-weight-bold"> لا يوجد </p>
+        <% end %>
+        <%= link_to 'اضافه صوره', new_category_product_image_path(@product.category, @product) %>    
+    </div>
+
+</div>
