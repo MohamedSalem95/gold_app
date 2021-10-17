@@ -1,0 +1,16 @@
+<div class="columns">
+    <div class="column">
+        <p class="has-text-danger has-text-weight-semibold mb-2">
+            هل انت متاكد انك تريد حذف الفئه الفرعيه
+            <u class="has-text-primary">
+                <span>
+                    <%= @sub_category.name %>
+                </span>
+            </u>
+            ؟
+        </p>
+
+        <%= link_to 'نعم', category_sub_category_path(@category, @sub_category), method: :delete, class: 'button is-danger' %>
+        <%= link_to 'عوده', category_path(@category), class: 'button is-primary mr-2' %>
+    </div>
+</div>

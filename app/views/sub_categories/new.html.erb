@@ -1,0 +1,64 @@
+<div class="columns">
+
+    <div class="column">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li>
+                    <%= link_to 'الفئات', categories_path %>
+                </li>
+                <li class="has-text-weight-semibold has-text-grey">
+                    <%= link_to @category.name, category_path(@category) %>
+                </li>
+                <li class="is-active has-text-weight-semibold has-text-grey"><a href="#" aria-current="page"> انشاء فئه فرعيه </a></li>
+            </ul>
+        </nav>
+        <h5 class="title is-5"> انشاء فئه فرعيه جديده. </h5>
+        <%= form_with model: [@category, @sub_category], local: true do |f| %>
+            <div class="field">
+                <%= f.label :name, 'الاسم', class: 'has-text-weight-bold' %> <span class="has-text-danger">*</span>
+                <div class="control">
+                    <%= f.text_field :name, autofocuns: true, class: "input #{'is-danger' if @sub_category.errors[:name].any?}", placeholder: 'الاسم  ...' %>
+                </div>
+                <% @sub_category.errors[:name].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+
+             <div class="field">
+                <%= f.label :code, 'الكود', class: 'has-text-weight-bold' %>  <span class="has-text-danger">*</span>
+                <div class="control">
+                    <%= f.number_field :code, min: 0, class: "input #{'is-danger' if @sub_category.errors[:code].any?}", placeholder: 'الكود  ...' %>
+                </div>
+                <% @sub_category.errors[:code].each do |error| %>
+                    <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                <% end %>
+            </div>
+
+            
+
+            <div class="file mb-3">
+                <%= f.label :image, class: 'has-text-weight-bold' do %>
+                    الصوره   <span class="has-text-danger">*</span>
+                    <div>
+                        <%= f.file_field :image, class: "file-input #{'is-danger' if @sub_category.errors[:image].any?}" %>
+                    </div>
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            اختر صوره...
+                        </span>
+                    </span>
+                    <% @sub_category.errors[:name].each do |error| %>
+                        <p class="help is-danger has-text-weight-bold"> <%= error %> </p>
+                    <% end %>
+                <% end %>
+            </div>
+            <%= f.submit 'انشاء', class: 'button is-success' %>
+        <% end %>
+    
+    </div>
+
+</div>

@@ -55,9 +55,10 @@
                                     </td>
 
                                     <td>
-                                        <%= link_to 'تعديل', edit_category_path(cat), class: 'has-text-weight-semibold' %>
+                                        <%= link_to 'عرض', category_path(cat), class: 'has-text-weight-semibold button is-small is-outlined' %>
+                                        <%= link_to 'تعديل', edit_category_path(cat), class: 'has-text-weight-semibold  button is-small is-outlined' %>
                                         &nbsp;
-                                        <%= link_to 'حذف', confirm_category_path(cat), class: 'has-text-weight-semibold has-text-danger' %>
+                                        <%= link_to 'حذف', confirm_category_path(cat), class: 'has-text-weight-semibold has-text-danger  button is-small is-outlined' %>
                                     </td>
                                 </tr>    
                             <% end %>

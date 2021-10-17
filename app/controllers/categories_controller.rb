@@ -1,8 +1,11 @@
 class CategoriesController < ApplicationController
-    before_action :set_category, only: [:edit, :update, :confirm]
+    before_action :set_category, only: [:show, :edit, :update, :confirm, :destroy]
 
     def index
         @categories = Category.latest.page(params[:page])
+    end
+
+    def show
     end
 
     def new

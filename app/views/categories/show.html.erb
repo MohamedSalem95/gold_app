@@ -1,0 +1,83 @@
+<div class="columns">
+
+    <div class="column is-2">
+        <div class="has-background-light p-2 has-border-radius-10">
+            <aside class="menu">
+            <p class="menu-label">
+                    الاداره
+            </p>
+            <ul class="menu-list">
+                <li><%=  link_to 'الفئات', categories_path, class: 'is-active' %></li>
+                <!-- <li><a> فضيات </a></li> -->
+                <li> <%=  link_to 'المنتجات', products_path %> </li>
+            </ul>
+            
+            </aside>
+        </div>
+    </div>
+
+    <div class="column">
+     <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <%= link_to 'الفئات', categories_path %>
+            </li>
+            <li class="is-active has-text-weight-semibold has-text-grey"><a href="#" aria-current="page"> <%= @category.name %> </a></li>
+        </ul>
+    </nav>
+
+        <div class="has-background-light has-border-radius-10 p-2 is-flex is-flex-direction-row">
+            <%= image_tag @category.image.variant(resize_to_fill: [100, 100]), class: 'has-border-radius-5 ml-3' %>
+        
+            <div class="is-flex is-flex-direction-column">
+                <h6 class="title is-6 mb-0">
+                    <%= @category.name %>
+                </h6>
+                <p class="mt-0 mb-2">
+                    <%= @category.description %>
+                </p>
+                <%= link_to 'اضافه فئه فرعيه', new_category_sub_category_path(@category), class: 'button is-primary is-small has-text-weight-bold' %>
+            </div>
+        </div>
+        <h5 class="title is-5"> الفئات الفرعيه. </h5>
+
+        <% if @category.sub_categories.any? %>
+            <table class="table is-narrow is-hoverable is-stripped is-fullwidth">
+                <thead>
+                    <th> الصوره </th>
+                    <th> الاسم </th>
+                    <th> الكود </th>
+                    <th></th>
+                </thead>
+
+                <tbody>
+                    <% @category.sub_categories.each do |sub| %>
+                        <tr>
+                            <td>
+                                <figure class="image is-48x48">
+                                    <%= image_tag sub.image.variant(resize_to_fill: [100, 100]), class: 'has-border-radius-5' %>
+                                </figure>
+                            </td>
+                            <td>
+                                <b> <%= sub.name %> </b>
+                            </td>
+                            <td>
+                                <%= sub.code %>
+                            </td>
+                            <td>
+                                <%= link_to 'تعديل', edit_category_sub_category_path(@category, sub), class: 'has-text-weight-semibold button is-small is-outlined' %>
+                                <%= link_to 'حذف', confirm_category_sub_category_path(@category, sub), class: 'has-text-weight-semibold button is-small is-outlined has-text-danger' %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+                
+        <% else %>
+            <p class="has-text-weight-semibold">
+                لا يوجد فئات فرعيه بعد.
+            </p>
+        <% end %>
+    </div>
+
+</div>
