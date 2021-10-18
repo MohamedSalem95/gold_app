@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
     before_action :set_cat, only: [:new, :create, :show]
-    before_action :set_product, only: [:show]
+    before_action :set_product, only: [:show, :show_customer]
 
     def list
         @products = Product.latest
@@ -11,6 +11,10 @@ class ProductsController < ApplicationController
     end
 
     def show
+    end
+
+    def show_customer
+        @product.increment!(:views)
     end
 
     def new

@@ -13,7 +13,7 @@
         <p class="has-text-weight-semibold">
             الخصم: 
             <% if @product.discount.present? %>
-                <span class="has-text-success"> <%= @product.price %> </span>
+                <span class="has-text-success"> <%= @product.discount %> </span>
             <% else %>
                 لا يوجد
             <% end %>
@@ -62,5 +62,7 @@
         <% end %>
         <%= link_to 'اضافه صوره', new_category_product_image_path(@product.category, @product) %>    
     </div>
+
+    <App></App>
 
 </div>
