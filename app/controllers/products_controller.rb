@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
-    before_action :set_cat, only: [:new, :create, :show]
-    before_action :set_product, only: [:show, :show_customer]
+    before_action :set_cat, only: [:new, :create, :show, :edit, :update]
+    before_action :set_product, only: [:show, :show_customer, :edit, :update]
 
     def list
         @products = Product.latest
@@ -37,6 +37,18 @@ class ProductsController < ApplicationController
             redirect_to products_path
         else
             render :new
+        end
+    end
+
+    def edit
+    end
+
+    def update
+        if @product.update(product_params)
+            flash[:success] = 'تم تعديل المنتج بنجاح.'
+            redirect_to category_product_path(@category, @product)
+        else
+            render :edit
         end
     end
 
