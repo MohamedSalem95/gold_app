@@ -1,13 +1,29 @@
 <template>
   <div class="cont" dir="ltr">
-    <Carousel perPage=1 autoPlay="true" centerMode="true" autoplayTimeout="2000">
+    <Carousel :perPage=1 :autoPlay="true" :centerMode="true" :autoplayTimeout="2000">
         <Slide v-for="image in images" v-bind:key="image">
-            <figure class="image">
+            <figure class="image is-1by1">
 
                 <img v-bind:src="image">
             </figure>
         </Slide>
     </Carousel>
+
+    <b-carousel
+      id="carousel-1"
+      v-model="slide"
+      :interval="4000"
+      controls
+      indicators
+      background="#ababab"
+      img-width="1024"
+      img-height="480"
+      style="text-shadow: 1px 1px 2px #333;"
+    >
+        <span v-for="image in images" v-bind:key="image">
+            <b-carousel-slide img-src="image"></b-carousel-slide>
+        </span>
+    </b-carousel>
   </div>
 </template>
 
@@ -25,7 +41,8 @@ export default {
     },
     data: function () {
         return {
-            message: "Hello Product"
+            message: "Hello Product",
+            slide: 0
         }
     },
     mounted () {

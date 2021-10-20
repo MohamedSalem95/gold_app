@@ -1,3 +1,12 @@
+
+<nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+        <li>
+            <%= link_to 'المنتجات', products_path %>
+        </li>
+        <li class="is-active has-text-weight-semibold has-text-grey"><a href="#" aria-current="page"> <%= @product.name %></a></li>
+    </ul>
+</nav>
 <div class="columns">
 
     <div class="column">
@@ -18,6 +27,14 @@
                 لا يوجد
             <% end %>
         </p>
+        <% if @product.discount.present? %>
+            <p class="has-text-weight-semibold">
+                السعر بعد الخصم:
+                <span class="has-text-danger">
+                    <%= @product.price - @product.discount %> 
+                </span>
+            </p>
+        <% end %>
         <p class="has-text-weight-semibold">
             العيار: 
             <span class="has-text-danger"> <%= @product.gold_type %> </span>
@@ -47,21 +64,31 @@
             الصور: 
             
         </p>
-        <% if @product.images.any? %>
-            <% @product.images.each do |image| %>
-                <div class="has-background-light has-border-radius-10 p-3 mb-2 ml-2">
-                    <%= image_tag image.image.variant(resize_to_fill: [100, 100]) %>
-                    <p>
-                        <%= image.caption %>
-                    </p>
-                    <%= link_to 'حذف', confirm_category_product_image_path(@product.category, @product, image), class: 'has-text-danger' %>
-                </div>
-            <% end %>
-        <% else %>
-            <p class="has-text-weight-bold"> لا يوجد </p>
-        <% end %>
-        <%= link_to 'اضافه صوره', new_category_product_image_path(@product.category, @product) %>    
+           
     </div>
 
 
 </div>
+
+<div class="columns">
+    <% if @product.images.any? %>
+            <% @product.images.each do |image| %>
+               <div class="column is-2">
+                     <div class="has-background-light has-border-radius-10 p-3 mb-2 ml-2">
+                    <figure class="image is-1by1">
+                        <%= image_tag image.image.variant(resize_to_fill: [150, 150]) %>
+                    </figure>
+                    <p>
+                        <%= image.caption %>
+                    </p>
+                    <%= link_to 'حذف', confirm_category_product_image_path(@product.category, @product, image), class: 'has-text-danger has-text-weight-semibold' %>
+                </div>
+               </div>
+            <% end %>
+        <% else %>
+            <p class="has-text-weight-bold"> لا يوجد </p>
+        <% end %>
+        
+</div>
+<%= link_to 'اضافه صوره', new_category_product_image_path(@product.category, @product), class: 'has-text-weight-bold button' %>
+<p class="mt-3"></p> 

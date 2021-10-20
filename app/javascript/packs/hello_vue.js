@@ -38,12 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
 import Product from '../product.vue'
+import { CarouselPlugin } from 'bootstrap-vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#app',
     components: { App, Product }
   })
+  Vue.use(CarouselPlugin)
 })
 //
 //

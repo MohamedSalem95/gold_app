@@ -58,8 +58,8 @@
                     <% @category.sub_categories.each do |sub| %>
                         <tr>
                             <td>
-                                <figure class="image is-48x48">
-                                    <%= image_tag sub.image.variant(resize_to_fill: [100, 100]), class: 'has-border-radius-5' %>
+                                <figure class="image is-24x24">
+                                    <%= image_tag sub.image.variant(resize_to_fill: [24, 24]), class: 'has-border-radius-5' %>
                                 </figure>
                             </td>
                             <td>
