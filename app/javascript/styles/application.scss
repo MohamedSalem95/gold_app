@@ -1,9 +1,18 @@
 // @import '~bulma';
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css";
 
+@font-face {
+    font-family: 'ScheherazadeNew';
+    src: url('../fonts/ScheherazadeNew.ttf');
+}
+
 // styles
 .has-border-bottom {
     border-bottom: 1px solid #dddddd;
+}
+
+.is-logo {
+    font-family: 'ScheherazadeNew';
 }
 
 .has-border-radius-10 {

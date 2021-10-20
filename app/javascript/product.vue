@@ -13,6 +13,7 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel'
+// import { Carousel3d, Slide } from 'vue-carousel-3d'
 
 export default {
     props: {

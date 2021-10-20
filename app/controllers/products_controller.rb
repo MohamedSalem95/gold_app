@@ -13,6 +13,12 @@ class ProductsController < ApplicationController
     def show
     end
 
+    def home
+        @categories = Category.latest
+        @latest_products = Product.latest_products
+        @best_discount = Product.best_discount
+    end
+
     def show_customer
         @product.increment!(:views)
     end

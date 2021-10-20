@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  
+  # root path
+  root to: 'products#home', as: 'root'
   
   resources :categories do
     resources :sub_categories

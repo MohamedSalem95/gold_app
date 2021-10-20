@@ -7,6 +7,8 @@ class Product < ApplicationRecord
 
     # scopes
     scope :latest, -> { order(created_at: :desc) }
+    scope :latest_products, -> { order(created_at: :desc).limit(3) }
+    scope :best_discount, -> { where('stock != 0').order(discount: :desc) }
 
     # valications
     validates_presence_of :name, message: 'هذا الحقل مطلوب.'
