@@ -1,9 +1,17 @@
 class SubCategoriesController < ApplicationController
-    before_action :set_cat, only: [:new, :create, :edit, :update, :confirm, :destroy]
-    before_action :set_sub, only: [:edit, :update, :confirm, :destroy]
+    before_action :set_cat, only: [:new, :create, :edit, :update, :confirm, :destroy, :index, :show]
+    before_action :set_sub, only: [:edit, :update, :confirm, :destroy, :show]
 
     def new
         @sub_category = SubCategory.new
+    end
+
+    def index
+        @sub_categories = @category.sub_categories
+    end
+
+    def show
+        @products = @sub_category.products.latest.page(params[:page])
     end
 
     def create

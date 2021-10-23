@@ -1,5 +1,8 @@
 class Product < ApplicationRecord
 
+    # kaminari
+    paginates_per 7
+
     # associations
     belongs_to :category
     belongs_to :sub_category

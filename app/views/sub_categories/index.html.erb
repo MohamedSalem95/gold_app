@@ -1,0 +1,27 @@
+<nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+        <li>
+            <%= link_to 'الرئيسيه', root_path %>
+        </li>
+        <li class="is-active has-text-weight-semibold has-text-grey"><a href="#" aria-current="page">  <%= @category.name %> </a></li>
+    </ul>
+</nav>
+
+<div class="columns">
+    <% if @sub_categories.any? %>
+        <% @sub_categories.each do |sub| %>
+            <div class="column is-1">
+                <%= link_to category_sub_category_path(@category, sub) do %>
+                    <figure class="image is-96x96">
+                        <%= image_tag sub.image.variant(resize_to_fill: [96, 96]), class: 'has-border-radius-10' %>
+                    </figure>
+                    <p class="has-text-weight-semibold">
+                        <%= sub.name %>
+                    </p>
+                <% end %>
+            </div>
+        <% end %>
+    <% else %>
+        <p class="has-text-weight-bold"> لا يوجد فئات فرعيه هنا بعد. </p>
+    <% end %>
+</div>

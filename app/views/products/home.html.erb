@@ -4,7 +4,7 @@
         <% if @categories.any? %>
             <% @categories.each do |cat| %>
                 <div class="column is-1">
-                   <%= link_to '#' do %>
+                   <%= link_to category_sub_categories_path(cat) do %>
                         <figure class="image is-96x96">
                             <%= image_tag cat.image.variant(resize_to_fill: [120, 120]), class: 'has-border-radius-10' %>
                         </figure>

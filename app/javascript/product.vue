@@ -1,15 +1,15 @@
 <template>
   <div class="cont" dir="ltr">
-    <Carousel :perPage=1 :autoPlay="true" :centerMode="true" :autoplayTimeout="2000">
+    <Carousel :perPage=1 :auto-play="true" :centerMode="true" :autoplayTimeout="2000">
         <Slide v-for="image in images" v-bind:key="image">
-            <figure class="image is-1by1">
+            <figure class="image">
 
-                <img v-bind:src="image">
+                <img v-bind:src="image" height=300>
             </figure>
         </Slide>
     </Carousel>
 
-    <b-carousel
+    <!--<b-carousel
       id="carousel-1"
       v-model="slide"
       :interval="4000"
@@ -23,7 +23,7 @@
         <span v-for="image in images" v-bind:key="image">
             <b-carousel-slide img-src="image"></b-carousel-slide>
         </span>
-    </b-carousel>
+    </b-carousel>-->
   </div>
 </template>
 
