@@ -53,6 +53,6 @@ export default {
 
 <style scoped>
 .cont {
-    height: 300px;
+    /*height: 300px;*/
 }
 </style>

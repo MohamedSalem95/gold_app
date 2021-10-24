@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
     before_action :set_category, only: [:show, :edit, :update, :confirm, :destroy]
-
+    before_action :authenticate_user!
     def index
         @categories = Category.latest.page(params[:page])
     end

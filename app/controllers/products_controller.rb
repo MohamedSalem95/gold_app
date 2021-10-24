@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
 
+    before_action :authenticate_user!, except: [:home, :show_customer]
     before_action :set_cat, only: [:new, :create, :show, :edit, :update]
     before_action :set_product, only: [:show, :show_customer, :edit, :update]
 

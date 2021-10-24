@@ -1,0 +1,26 @@
+<h5 class="title is-5">تسجيل دخول</h5>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email, 'الايميل', class: 'has-text-weight-semibold' %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input', placeholder: 'الايميل...' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, 'كلمه السر', class: 'has-text-weight-semibold' %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: 'input', placeholder: 'كلمه السر...' %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me, 'تذكرني؟', class: 'has-text-weight-semibold' %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "دخول", class: 'button is-success' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

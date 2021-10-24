@@ -23,6 +23,25 @@
           </article>
         <% end %>
 
+         <% if flash[:notice] %>
+          <article class="message is-success">
+            <div class="message-body">
+              <strong> <%= flash[:notice] %> </strong>
+            </div>
+          </article>
+        <% end %>
+
+         <% if flash[:alert] %>
+          <article class="message is-warning">
+            <div class="message-body">
+              <strong> <%= flash[:alert] %> </strong>
+            </div>
+          </article>
+        <% end %>
+
+
+
+
         <%= yield %>
       </div>
     </div>

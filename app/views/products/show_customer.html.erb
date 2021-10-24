@@ -1,9 +1,9 @@
 <div class="columns">
-    <div class="column is-6">
+    <div class="column is-4">
         <Product :images='<%= @product.images.map { |image| rails_blob_path(image.image, only_path: true) } %>'></Product>
     </div>
 
-    <div class="column is-6">
+    <div class="column">
         <h5 class="title is-5 mb-3">
             <%= @product.name %>
             <% if @product.discount.present? %>
@@ -55,6 +55,16 @@
                     جنيه
                 </span>
             <% end %>
+        </p>
+
+        <p  class="has-text-weight-bold has-text-gray">
+            
+            <%= @product.views %>
+            <svg class="pt-1" xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+            </svg>
+            مشاهده
         </p>
     </div>
 </div>

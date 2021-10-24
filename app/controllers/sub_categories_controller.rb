@@ -1,7 +1,7 @@
 class SubCategoriesController < ApplicationController
     before_action :set_cat, only: [:new, :create, :edit, :update, :confirm, :destroy, :index, :show]
     before_action :set_sub, only: [:edit, :update, :confirm, :destroy, :show]
-
+    before_action :authenticate_user!, except: [:show, :index]
     def new
         @sub_category = SubCategory.new
     end

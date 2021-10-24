@@ -46,14 +46,14 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
+       <% if user_signed_in? %>
+          <%= link_to 'تسجيل خروج', destroy_user_session_path, method: :delete, class: 'has-text-danger has-text-weight-semibold' %>
+       <% else %>
+           <div class="buttons">
+            <%= link_to 'تسجيل دخول', new_user_session_path, class: 'has-text-weight-bold' %>
+          </div>
+
+       <% end %>
       </div>
     </div>
   </div>

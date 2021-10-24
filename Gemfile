@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Kaminari for pagination
 gem 'kaminari'
+
+# devise
+gem 'devise'

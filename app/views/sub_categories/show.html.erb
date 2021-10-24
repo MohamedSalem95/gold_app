@@ -63,8 +63,12 @@
 
             
         <% end %>
-        <%= paginate @products %>
+        
     <% else %>
         <p class="has-text-weight-bold"> لا يوجد منتجات هنا بعد. </p>
     <% end %>
 </div>
+
+<% if @products.any? %>
+    <%= paginate @products %>
+<% end %>

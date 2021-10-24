@@ -1,0 +1,85 @@
+<div class="columns">
+
+  <div class="column is-2">
+        <div class="has-background-light p-2 has-border-radius-10">
+            <aside class="menu">
+            <p class="menu-label">
+                    الاداره
+            </p>
+            <ul class="menu-list">
+                <li><%=  link_to 'الرئيسيه', dashboard_path %></li>
+                <li><%=  link_to 'الفئات', categories_path %></li>
+                <!-- <li><a> فضيات </a></li> -->
+                <li> <%=  link_to 'المنتجات', '#' %> </li>
+                <li> <%= link_to 'تعديل الحساب', edit_user_registration_path, class: 'is-active' %> </li>
+            </ul>
+        
+            </aside>
+        </div>
+    </div>
+
+    <div class="column">
+            
+      <h5 class="title is-5">تعديل بيانات الحساب</h5>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%# render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :email, 'الايميل', class: 'has-text-weight-semibold' %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input #{'is-danger' if resource.errors['email'].any?}", placeholder: 'الايميل ..' %>
+          <% resource.errors['email'].each do |error| %>
+            <p class="has-text-danger"> <%= error %> </p>
+          <% end %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="has-background-light p-2 has-border-radius-10">
+          <i>اتركها فارغه اذا كنت لا تريد تغيير كلمه السر.</i><br />
+          <div class="field">
+            <%= f.label :password, 'كلمه السر' , class: 'has-text-weight-semibold' %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "input#{'is-danger' if resource.errors['password'].any?}", placeholder: 'كلمه السر ..' %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %> حروف علي الاقل</em>
+            <% end %>
+             <% resource.errors['password'].each do |error| %>
+                <p class="has-text-danger"> <%= error %> </p>
+              <% end %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation, 'تاكيد كلمه السر', class: 'has-text-weight-semibold' %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input #{'is-danger' if resource.errors['password_confirmation'].any?}", placeholder: 'تاكيد كلمه السر ..' %>
+             <% resource.errors['password_confirmation'].each do |error| %>
+              <p class="has-text-danger"> <%= error %> </p>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :current_password, 'كلمه السر الحاليه', class: 'has-text-weight-semibold' %> <i>(<small class="has-text-weight-semibold"> يجب ادخال كلمه السر الحاليه لحفظ التغييرات </small>)</i><br />
+          <%= f.password_field :current_password, class: "input #{'is-danger' if resource.errors['current_password'].any?}", placeholder: 'كلمه السر الحاليه ..' %>
+          <% resource.errors['current_password'].each do |error| %>
+              <p class="has-text-danger"> <%= error %> </p>
+            <% end %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit 'حفظ', class: 'button is-success' %>
+        </div>
+      <% end %>
+
+      <!-- <h3>Cancel my account</h3> -->
+
+      <!-- <p>Unhappy? <%# button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p> -->
+
+      <%= link_to "الغاء", :back, class: 'has-text-weight-semibold' %>
+
+    </div>
+
+
+</div>
