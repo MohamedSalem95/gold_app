@@ -5,9 +5,15 @@
             <% @categories.each do |cat| %>
                 <div class="column is-1">
                    <%= link_to category_sub_categories_path(cat) do %>
-                        <figure class="image is-96x96">
-                            <%= image_tag cat.image.variant(resize_to_fill: [120, 120]), class: 'has-border-radius-10' %>
-                        </figure>
+                        
+
+                        <% if cat.image.present? %>
+                             <figure class="image is-96x96">
+                                <%= image_tag cat.image.variant(resize_to_fill: [120, 120]), class: 'has-border-radius-10' %>
+                            </figure>
+                       <% else %>
+                                <%= image_pack_tag 'no_image.jpg', width: 96, class: 'has-border-radius-10' %>
+                       <% end %>
                          
                         <p class="has-text-weight-bold"> <%= cat.name %> </p>
                    <% end %>
@@ -26,9 +32,13 @@
             <% @latest_products.each do |product| %>
                 <div class="column is-2">
                    <%= link_to product_path(product) do %>
-                        <figure class="image is-1by1">
-                            <%= image_tag product.images[0].image.variant(resize_to_fill: [200, 200]), class: 'has-border-radius-10' %>
-                        </figure>
+                       <% if product.images.any? %>
+                             <figure class="image is-1by1">
+                                <%= image_tag product.images[0].image.variant(resize_to_fill: [200, 200]), class: 'has-border-radius-10' %>
+                            </figure>
+                       <% else %>
+                                <%= image_pack_tag 'no_image.jpg', width: 200, class: 'has-border-radius-10' %>
+                       <% end %>
                          
                         <p class="has-text-weight-bold mt-1">
                             <%= product.name %>
@@ -79,9 +89,13 @@
             <% @best_discount.each do |product| %>
                 <div class="column is-2">
                    <%= link_to product_path(product) do %>
-                        <figure class="image is-1by1">
-                            <%= image_tag product.images[0].image.variant(resize_to_fill: [200, 200]), class: 'has-border-radius-10' %>
-                        </figure>
+                        <% if product.images.any? %>
+                             <figure class="image is-1by1">
+                                <%= image_tag product.images[0].image.variant(resize_to_fill: [200, 200]), class: 'has-border-radius-10' %>
+                            </figure>
+                       <% else %>
+                                <%= image_pack_tag 'no_image.jpg', width: 200, class: 'has-border-radius-10' %>
+                       <% end %>
                          
                         <p class="has-text-weight-bold mt-1">
                             <%= product.name %>

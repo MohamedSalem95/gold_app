@@ -1,6 +1,12 @@
 <div class="columns">
-    <div class="column is-4">
-        <Product :images='<%= @product.images.map { |image| rails_blob_path(image.image, only_path: true) } %>'></Product>
+    <div class="column is-5">
+        <% if @product.images.any? %>
+            <Product :images='<%= @product.images.map { |image| rails_blob_path(image.image, only_path: true) } %>'></Product>
+        <% else %>
+            <figure class="image is-1by1">
+                <%= image_pack_tag 'no_image.jpg' %>
+            </figure>
+        <% end %>
     </div>
 
     <div class="column">
