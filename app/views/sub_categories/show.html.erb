@@ -10,64 +10,66 @@
     </ul>
 </nav>
 
-<div class="columns">
+
     <% if @products.any? %>
         <% @products.each do |product| %>
-            <div class="column is-12">
-                <%= link_to product_path(product) do %>
-                    <div class="is-flex is-flex-direction-row">
-                        <figure class="image is-128x128">
-                            <%= image_tag product.images[0].image.variant(resize_to_fill: [200, 200]), class: 'has-border-radius-10' %>
-                        </figure>
-                        <div class="is-flex is-flex-direction-column mr-3">
-                            <h5 class="title is-5 mb-2">
-                                <%= product.name %>
-                                <% if product.discount.present? %>
-                                    <span class="tag is-success">
-                                        خصم
-                                        <%= ((product.discount / product.price) * 100).floor %>
-                                        %
-                                    </span>
+            <div class="columns">
+                <div class="column is-12">
+                    <%= link_to product_path(product) do %>
+                        <div class="is-flex is-flex-direction-row">
+                            <figure class="image is-128x128">
+                                <%= image_tag product.images[0].image.variant(resize_to_fill: [200, 200]), class: 'has-border-radius-10' %>
+                            </figure>
+                            <div class="is-flex is-flex-direction-column mr-3">
+                                <h5 class="title is-5 mb-2">
+                                    <%= product.name %>
+                                    <% if product.discount.present? %>
+                                        <span class="tag is-success">
+                                            خصم
+                                            <%= ((product.discount / product.price) * 100).floor %>
+                                            %
+                                        </span>
+                                    <% end %>
+                                </h5>
+                                <% if product.description.present? %>
+                                    <p class="has-text-weight-semibold has-text-grey-light mb-2">
+                                        <%= product.description.truncate(30) %>
+                                    </p>
                                 <% end %>
-                            </h5>
-                            <% if product.description.present? %>
-                                <p class="has-text-weight-semibold has-text-grey-light mb-2">
-                                    <%= product.description.truncate(30) %>
+
+                                <p class="title is-6 mt-2 ">
+                                    <% if product.discount.present? %>
+                                        <span class="has-text-success">
+                                            <%= product.price - product.discount %>
+                                            جنيه
+                                        </span>
+                                        
+                                        <span class="has-text-grey-light">
+                                            بدلا من
+                                            <s> <%= product.price %> </s>
+                                        </span>
+
+                                    <% else %>
+                                        <span class="has-text-success">
+                                            <%= product.price %>
+                                            جنيه
+                                        </span>
+                                    <% end %>
                                 </p>
-                            <% end %>
-
-                            <p class="title is-6 mt-2 ">
-                                <% if product.discount.present? %>
-                                    <span class="has-text-success">
-                                        <%= product.price - product.discount %>
-                                        جنيه
-                                    </span>
-                                    
-                                    <span class="has-text-grey-light">
-                                        بدلا من
-                                        <s> <%= product.price %> </s>
-                                    </span>
-
-                                <% else %>
-                                    <span class="has-text-success">
-                                        <%= product.price %>
-                                        جنيه
-                                    </span>
-                                <% end %>
-                            </p>
+                            </div>
                         </div>
-                    </div>
-                    <hr>
-                <% end %>
+                        <hr>
+                    <% end %>
+                </div>
             </div>
 
+                
+            <% end %>
             
+        <% else %>
+            <p class="has-text-weight-bold"> لا يوجد منتجات هنا بعد. </p>
         <% end %>
-        
-    <% else %>
-        <p class="has-text-weight-bold"> لا يوجد منتجات هنا بعد. </p>
-    <% end %>
-</div>
+
 
 <% if @products.any? %>
     <%= paginate @products %>

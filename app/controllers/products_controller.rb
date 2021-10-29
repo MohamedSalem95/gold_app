@@ -33,6 +33,7 @@ class ProductsController < ApplicationController
         @product.category_code = @category.code
         @product.category = @category
         @product.sub_category = get_sub
+        @product.sub_code = get_sub.code
         if @product.save
             flash[:success] = 'تم انشاء المنتج بنجاح'
             redirect_to products_path

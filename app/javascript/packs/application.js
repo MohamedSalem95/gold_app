@@ -10,6 +10,7 @@ import "channels"
 
 // styles
 import '../styles/application.scss'
+import '../src/menu.js'
 
 // images
 require.context('../images', true)
@@ -17,3 +18,4 @@ require.context('../images', true)
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
