@@ -23,7 +23,9 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
+
        <% if user_signed_in? %>
+          <%= link_to 'لوحه التحكم', dashboard_path, class: 'has-text-success has-text-weight-semibold' %>
           <%= link_to 'تسجيل خروج', destroy_user_session_path, method: :delete, class: 'has-text-danger has-text-weight-semibold' %>
        <% else %>
            <div class="buttons">
@@ -35,7 +37,3 @@
     </div>
   </div>
 </nav>
-
-<script>
-  console.log(document.getElementById('navBurger')) 
-</script>

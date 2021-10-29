@@ -16,6 +16,6 @@ import '../src/menu.js'
 require.context('../images', true)
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
